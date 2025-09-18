@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Фильтрация массива</title>
+    <title>Пример</title>
+    <script>
+        function pil() {
+            // значение из инпута
+            var n = Number(document.forms["frm"].elements["n"].value);
+            var s = 0;
+            function factorial(num) {
+                if (num == 0 || num == 1)
+                    return 1;
+                for (var i = num - 1; i >= 1; i--)
+                    num *= i;
+                return num;
+            }
+            for(var i = 0; i <= n; i++) {
+                s += ((-1)**i) * (i**n) / factorial(i);
+            }
+            document.write("Результат: " + s);
+        }
+    </script>
 </head>
 <body>
-    <div class="result"></div>
-
-    <script>
-        // Исх. массив цел. чисел
-        const originalArray = [10, 15, 20, 25, 30, 35, 40];
-        
-        const K = 5;
-
-        // Фильтрация кратных
-        const filteredArray = originalArray.filter(element => element % K === 0);
-
-        // Вывод результата
-        document.querySelector('.result').innerHTML = `Элементы кратные ${K}: ${filteredArray}`;
-    </script>
+    <form name="frm" method="post" onsubmit="pil(); return false;">
+        Введите n: <input type="text" name="n" value="">
+        <input type="submit" value="Отправить">
+    </form>
 </body>
 </html>
